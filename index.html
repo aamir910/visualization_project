@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAIL Course Study — Faculty Findings · CHAT-3G Dashboard</title>
+  <meta name="description" content="A CHAT-3G analysis of faculty perceptions, role ambiguity, and systemic friction in the MAIL course at Kristiania University of Applied Sciences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============== TOP NAV ============== -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#hero" aria-label="MAIL Findings home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>MAIL</strong>
+          <span class="brand-sub">Faculty Findings · CHAT-3G</span>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="Section navigation">
+        <a href="#question">Question</a>
+        <a href="#lens">CHAT-3G</a>
+        <a href="#network">Network</a>
+        <a href="#charts">Charts</a>
+        <a href="#findings">Findings</a>
+        <a href="#synthesis">Synthesis</a>
+        <a href="#recommendations">Plan</a>
+      </nav>
+    </div>
+    <div class="topbar-progress" id="topProgress" aria-hidden="true"></div>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-mask"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow reveal">
+        <span class="kicker">MAIL Course Study — Faculty Findings</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="kicker muted">Kristiania University of Applied Sciences</span>
+      </div>
+      <h1 class="hero-title reveal">
+        Negotiating <em>Interdisciplinarity</em><br />
+        in Arts, Design and Media.
+      </h1>
+      <p class="hero-deck reveal">
+        A <strong>CHAT-3G analysis</strong> of faculty perceptions, role ambiguity, and systemic friction.
+      </p>
+
+      <div class="hero-meta reveal">
+        <div class="meta-block">
+          <span class="meta-label">Presenter</span>
+          <span class="meta-value">Ole Goethe</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Audience</span>
+          <span class="meta-value">MAIL faculty &amp; participants</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Date</span>
+          <span class="meta-value">May 2026</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Method</span>
+          <span class="meta-value">14 interviews · NVivo · CHAT-3G</span>
+        </div>
+      </div>
+
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#network">Open the network</a>
+        <a class="btn btn-ghost" href="#findings">Jump to findings</a>
+      </div>
+
+      <div class="kpis reveal" aria-label="Codebook overview">
+        <div class="kpi"><span class="kpi-num" id="kpiCodes">—</span><span class="kpi-label">Codes</span></div>
+        <div class="kpi"><span class="kpi-num" id="kpiRefs">—</span><span class="kpi-label">References</span></div>
+        <div class="kpi"><span class="kpi-num" id="kpiRoots">—</span><span class="kpi-label">CHAT roots</span></div>
+        <div class="kpi"><span class="kpi-num" id="kpiTop">—</span><span class="kpi-label">Top theme</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== BEFORE WE BEGIN ============== -->
+  <section class="band band-soft reveal" id="thanks">
+    <div class="container narrow">
+      <p class="eyebrow">02 · Before we begin</p>
+      <h2 class="band-title">First, <em>thank you.</em></h2>
+      <p class="lede">
+        This study exists because you sat with me and spoke openly about a course that was still very fresh.
+        The quotes you'll see today are <strong>yours, anonymized</strong>. They are here to honour what you said,
+        not to single anyone out.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== QUESTION ============== -->
+  <section class="band" id="question">
+    <div class="container">
+      <p class="eyebrow">03 · Section 01 — Problem</p>
+      <h2 class="band-title">The question we asked</h2>
+      <p class="lede big">
+        What happens in the <em>seams</em> between disciplines — between teachers and administration,
+        between intention and delivery?
+      </p>
+      <div class="two-col">
+        <div class="card reveal">
+          <span class="card-tag">Premise</span>
+          <p>
+            Interdisciplinary work is widely seen as a driver of innovation, but it is also widely
+            reported as <strong>difficult to coordinate</strong>.
+          </p>
+        </div>
+        <div class="card reveal">
+          <span class="card-tag accent">Reframe</span>
+          <p>
+            Treat challenges as <strong>systemic contradictions</strong> in course design,
+            not individual failings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CHAT-3G LENS ============== -->
+  <section class="band band-dark" id="lens">
+    <div class="container">
+      <p class="eyebrow light">04 · The lens</p>
+      <h2 class="band-title light">CHAT-3G</h2>
+      <p class="lede light">
+        Cultural-Historical Activity Theory, third generation. Engeström's framework treats any human activity
+        as <strong>seven interconnected components</strong>. The useful part isn't the components themselves —
+        it's that the framework forces you to look at the <em>spaces between</em> them. That's where friction lives.
+      </p>
+
+      <div class="chat-grid" id="chatGrid">
+        <!-- Cards injected by app.js so colors stay in sync with the graph -->
+      </div>
+
+      <p class="footnote light">Method: 14 faculty interviews, transcribed and coded in NVivo against the seven components.</p>
+    </div>
+  </section>
+
+  <!-- ============== FORCE NETWORK ============== -->
+  <section class="band" id="network">
+    <div class="container wide">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Visualization · 01</p>
+          <h2 class="band-title">The codebook as a network</h2>
+          <p class="lede">
+            Every node is a code from the NVivo codebook. Edges connect each code to its CHAT root.
+            Node size scales with <strong>references</strong>; color marks the activity-system component.
+          </p>
+        </div>
+        <div class="legend" id="netLegend" aria-label="Network legend"></div>
+      </div>
+
+      <div class="network-shell reveal">
+        <div class="network-toolbar">
+          <div class="search-wrap">
+            <input id="netSearch" type="search" placeholder="Search codes…" aria-label="Search codes" />
+          </div>
+          <div class="toggles">
+            <label class="switch">
+              <input type="checkbox" id="toggleHub" />
+              <span>Show activity hub</span>
+            </label>
+            <label class="switch">
+              <input type="checkbox" id="toggleLabels" checked />
+              <span>Show labels</span>
+            </label>
+            <button id="resetGraph" class="btn btn-mini" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="network-stage">
+          <svg id="forceGraph" role="img" aria-label="Force-directed network of NVivo codes"></svg>
+          <aside class="detail-panel" id="detailPanel" aria-live="polite">
+            <header>
+              <span class="dp-tag" id="dpTag">CHAT root</span>
+              <h3 id="dpTitle">Click any node</h3>
+            </header>
+            <p class="dp-desc" id="dpDesc">
+              Hover to highlight. Click a node to pin it here. Use search to focus a code.
+            </p>
+            <dl class="dp-stats">
+              <div><dt>References</dt><dd id="dpRefs">—</dd></div>
+              <div><dt>Sources</dt><dd id="dpSources">—</dd></div>
+              <div><dt>Path</dt><dd id="dpPath">—</dd></div>
+            </dl>
+          </aside>
+        </div>
+        <p class="caption">Drag any node to reposition. Scroll inside the canvas to zoom. The “activity hub” toggle adds a central node connecting the eight roots — useful for screenshots, off by default.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CHARTS ============== -->
+  <section class="band band-soft" id="charts">
+    <div class="container wide">
+      <p class="eyebrow">Visualization · 02</p>
+      <h2 class="band-title">How the coding lands across the activity system</h2>
+      <p class="lede">
+        Four readings of the same codebook: a coverage curve, the heaviest themes, the system's overall composition,
+        and the system's <em>shape</em>.
+      </p>
+
+      <div class="charts-grid">
+        <div class="chart-card reveal">
+          <header>
+            <h3>Coverage curve</h3>
+            <p>Codes ranked by references — and the cumulative share of all coded references.</p>
+          </header>
+          <div class="chart-wrap"><canvas id="lineChart"></canvas></div>
+        </div>
+
+        <div class="chart-card reveal">
+          <header>
+            <h3>Top 15 codes by references</h3>
+            <p>The themes faculty returned to most often across the 14 interviews.</p>
+          </header>
+          <div class="chart-wrap tall"><canvas id="barChart"></canvas></div>
+        </div>
+
+        <div class="chart-card reveal">
+          <header>
+            <h3>Composition by CHAT root</h3>
+            <p>Where coded references concentrate across the seven (plus one) components.</p>
+          </header>
+          <div class="chart-wrap"><canvas id="doughnutChart"></canvas></div>
+        </div>
+
+        <div class="chart-card reveal">
+          <header>
+            <h3>System shape</h3>
+            <p>Normalized profile of the activity system — a single glance at where weight sits.</p>
+          </header>
+          <div class="chart-wrap"><canvas id="radarChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FINDINGS ============== -->
+  <section class="band" id="findings">
+    <div class="container">
+      <p class="eyebrow">05–08 · Section 02 — Diagnosis</p>
+      <h2 class="band-title">Findings</h2>
+
+      <!-- Subject + Object -->
+      <div class="finding-pair reveal">
+        <h3 class="pair-title"><span>Who, and toward what</span><em>Roles evolved reactively. The goal kept moving.</em></h3>
+        <div class="two-col">
+          <article class="card finding" data-root="Subjects">
+            <span class="card-tag" style="--tag:var(--c-subject)">◆ Subject — the faculty</span>
+            <h4>Identity in motion: mentors, late entrants, and "protectors of the framework."</h4>
+            <p>People joined late. Roles shifted mid-course. Some described themselves as guarding a structure they hadn't built.</p>
+            <blockquote>
+              "I think my role has evolved into something that I gotta try and protect the framework we have established."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+          <article class="card finding" data-root="Object">
+            <span class="card-tag" style="--tag:var(--c-object)">◆ Object — the goal</span>
+            <h4>Faculty wanted innovation. Some students wanted their discipline.</h4>
+            <p>The course intended creative, interdisciplinary projects. That intention met students who, in places, expected discipline-specific training.</p>
+            <blockquote>
+              "Some of these students felt like they were being forced to do something else that wasn't really what they signed up for."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+        </div>
+      </div>
+
+      <!-- Rules + Division of Labor -->
+      <div class="finding-pair reveal">
+        <h3 class="pair-title"><span>The sharpest friction</span><em>Without rules, the labor distribution couldn't hold.</em></h3>
+        <div class="two-col">
+          <article class="card finding" data-root="Rules">
+            <span class="card-tag" style="--tag:var(--c-rules)">◆ Rules — formal &amp; informal</span>
+            <h4>"Maybe a bit too little structure."</h4>
+            <p>Roles, schedules, and communication norms had to be improvised. Different lead teachers gave different information; lines of authority were unclear.</p>
+            <blockquote>
+              "Everything from roles to communication guidelines to responsibilities — everything had to be built."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+          <article class="card finding" data-root="Division of Labor">
+            <span class="card-tag" style="--tag:var(--c-labor)">◆ Division of Labor</span>
+            <h4>Double roles for some. Underutilization for others.</h4>
+            <p>Course teacher <em>and</em> village leader at once for some; uncertain scope and unused expertise for others. Many learned their assignments only after students had begun.</p>
+            <blockquote>
+              "Those [planning and scheduling] were a bit improvised. I didn't know much about how it was going to be conducted."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+        </div>
+      </div>
+
+      <!-- Tools + Community -->
+      <div class="finding-pair reveal">
+        <h3 class="pair-title"><span>The connective tissue</span><em>Local belonging. Global fragmentation.</em></h3>
+        <div class="two-col">
+          <article class="card finding" data-root="Tools">
+            <span class="card-tag" style="--tag:var(--c-tools)">◆ Tools</span>
+            <h4>Channels existed. A shared way to use them did not.</h4>
+            <p>Teams, email, and frameworks like Prisma were all in play, but used informally. Information scattered; cognitive load grew.</p>
+            <blockquote>
+              "Messages and documents were scattered across different channels."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+          <article class="card finding" data-root="Community">
+            <span class="card-tag" style="--tag:var(--c-community)">◆ Community</span>
+            <h4>Real collaboration happened in the hallway.</h4>
+            <p>Villages developed strong internal identities — generative inside, walls outside. The most useful coordination often happened around the lunch table, not in scheduled meetings.</p>
+            <blockquote>
+              "Teacher collaboration happened informally rather than as part of a planned system."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+        </div>
+      </div>
+
+      <!-- Interacting Systems -->
+      <div class="finding-pair reveal">
+        <h3 class="pair-title"><span>Where systems meet</span><em>A theory–practice gap, named by faculty themselves.</em></h3>
+        <div class="two-col">
+          <article class="card finding" data-root="INTERACTING ACTIVITY SYSTEMS">
+            <span class="card-tag" style="--tag:var(--c-interact)">◆ Administrative ↔ Pedagogical</span>
+            <h4>Decisions made above the classroom collided with delivery inside it.</h4>
+            <p>Budget cuts removed planned guest lectures mid-course. Pedagogical frameworks were promoted institutionally without the structural support to implement them.</p>
+            <blockquote>
+              "There was a notable theory-practice gap — pedagogical ideals without sufficient structural or organizational support."
+              <cite>— From the analysis</cite>
+            </blockquote>
+          </article>
+          <article class="card finding" data-root="INTERACTING ACTIVITY SYSTEMS">
+            <span class="card-tag" style="--tag:var(--c-interact)">◆ Disciplinary ↔ Disciplinary</span>
+            <h4>Different methodologies, different feedback cultures, no shared vocabulary yet.</h4>
+            <p>Even adjacent disciplines reported needing time to learn each other's language and definitions before real collaboration could begin.</p>
+            <blockquote>
+              "Even if we're closely related discipline-wise, we're all apart when it comes to methodology and feedback."
+              <cite>— Faculty participant</cite>
+            </blockquote>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SYNTHESIS ============== -->
+  <section class="band band-dark" id="synthesis">
+    <div class="container">
+      <p class="eyebrow light">09 · Synthesis — the collaboration paradox</p>
+      <h2 class="band-title light">
+        The same friction that <em>frustrated</em> you also produced what you were <em>proud</em> of.
+      </h2>
+
+      <div class="paradox">
+        <div class="paradox-side reveal">
+          <span class="ps-tag negative">Unproductive friction</span>
+          <ul>
+            <li>Role ambiguity</li>
+            <li>Communication overload</li>
+            <li>Last-minute improvisation</li>
+            <li>Unequal workloads</li>
+            <li>A weakened sense of unified community</li>
+          </ul>
+        </div>
+        <div class="paradox-divider" aria-hidden="true">
+          <span></span>
+        </div>
+        <div class="paradox-side reveal">
+          <span class="ps-tag positive">Productive friction</span>
+          <ul>
+            <li>Self-organization</li>
+            <li>Negotiated roles</li>
+            <li>Cross-disciplinary translation</li>
+            <li>Student projects nobody had specified</li>
+            <li>Genuinely impressive work — by your own accounts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== RECOMMENDATIONS ============== -->
+  <section class="band" id="recommendations">
+    <div class="container">
+      <p class="eyebrow">10 · Section 03 — Recommendations</p>
+      <h2 class="band-title">Remove the friction that wastes you. Keep the friction that teaches.</h2>
+
+      <div class="recos">
+        <article class="reco reveal">
+          <span class="reco-num">01</span>
+          <h3>Define roles before launch.</h3>
+          <p>In writing, with hours and scope. Role ambiguity was the most direct cause of frustration and burnout.</p>
+        </article>
+        <article class="reco reveal">
+          <span class="reco-num">02</span>
+          <h3>One channel for course-wide communication.</h3>
+          <p>Pick it, protect it, and stop the scatter across Teams, email, and side-channels.</p>
+        </article>
+        <article class="reco reveal">
+          <span class="reco-num">03</span>
+          <h3>A formal community of practice for faculty.</h3>
+          <p>Give the lunch-table conversations a scheduled home. Don't leave coordination to chance.</p>
+        </article>
+        <article class="reco reveal">
+          <span class="reco-num">04</span>
+          <h3>Align the institutional layer with the teaching layer.</h3>
+          <p>Budgets, pedagogical frameworks, and scheduling — settled before the course begins, not during.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== OVER TO YOU ============== -->
+  <section class="band band-soft" id="over">
+    <div class="container narrow">
+      <p class="eyebrow">11 · Over to you</p>
+      <h2 class="band-title">Three questions, in your own time.</h2>
+      <ol class="questions">
+        <li><span>i.</span><p>Where did I get this wrong, or where did I miss something you actually lived through?</p></li>
+        <li><span>ii.</span><p>Of the four recommendations, which one would meaningfully change <em>your</em> experience the most?</p></li>
+        <li><span>iii.</span><p>What should the next iteration of MAIL hold onto from this one — even if we change everything else around it?</p></li>
+      </ol>
+      <p class="signoff">Thank you. <a href="mailto:ole.goethe@kristiania.no">ole.goethe@kristiania.no</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <span>MAIL Faculty Findings · CHAT-3G Dashboard · Kristiania University of Applied Sciences</span>
+      <span class="muted">Built with D3 v7 &amp; Chart.js · 14 interviews · NVivo codebook</span>
+    </div>
+  </footer>
+
+  <!-- Libraries (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+  <!-- Embedded codebook (works on file:// and over http) -->
+  <script src="data.js"></script>
+
+  <!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
