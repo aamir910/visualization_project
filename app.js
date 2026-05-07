@@ -34,12 +34,9 @@
     { key: "Division of Labor",          label: "Division of Labor",  num: "06",
       color: "var(--c-labor)", short: "Roles & hierarchy",
       desc: "How responsibilities, authority and tasks are distributed." },
-    { key: "Outcome",                    label: "Outcome",            num: "07",
-      color: "var(--c-outcome)", short: "Final transformation",
-      desc: "Perceived success or unintended consequences." },
-    { key: "INTERACTING ACTIVITY SYSTEMS", label: "Interacting Systems", num: "08",
+    { key: "INTERACTING ACTIVITY SYSTEMS", label: "Outcome",             num: "07",
       color: "var(--c-interact)", short: "Where systems meet",
-      desc: "Overlapping activity systems, and their tensions or contradictions." },
+      desc: "Overlapping activity systems, and their tensions or contradictions — the perceived outcomes and unintended consequences of the activity." },
   ];
 
   const ROOT_KEYS = ROOT_DEFINITIONS.map((r) => r.key);
@@ -62,7 +59,7 @@
   };
 
   // Normalize each codebook row → { id, root, leaf, refs, sources, isRoot }
-  const ITEMS = RAW.map((row) => {
+  const ALL_NORMALIZED = RAW.map((row) => {
     const parts = String(row.name).split("\\").map((s) => s.trim()).filter(Boolean);
     const root = parts[0];
     const leaf = parts.length > 1 ? parts[parts.length - 1] : parts[0];
@@ -76,7 +73,17 @@
       sources: Number(row.sources) || 0,
       description: row.description || "",
     };
-  }).filter((d) => ROOT_KEYS.includes(d.root));
+  });
+
+  // Items that belong to the 7 displayed CHAT roots (drives KPIs, charts, network roots)
+  const ITEMS = ALL_NORMALIZED.filter((d) => ROOT_KEYS.includes(d.root));
+
+  // Outcome leaves are NOT a CHAT root in the lens, but we still want to surface
+  // them in the network when the "Activity System" hub is shown — connected
+  // directly to the hub instead of through a parent root node.
+  const ORPHAN_OUTCOME_LEAVES = ALL_NORMALIZED.filter(
+    (d) => d.root === "Outcome" && !d.isRoot
+  );
 
   const ROOT_NODES = ITEMS.filter((d) => d.isRoot);
   const LEAF_NODES = ITEMS.filter((d) => !d.isRoot);
@@ -147,13 +154,18 @@
       return;
     }
     const color = node.isHub ? cssColor("--c-dark-2") : ROOT_COLOR[node.root] || cssColor("--accent-1");
-    dpTag.textContent = node.isHub ? "Activity hub" : (ROOT_BY_KEY[node.root]?.label || node.root);
+    dpTag.textContent = node.isHub
+      ? "Activity hub"
+      : node.isOrphan
+        ? "Outcome — direct"
+        : (ROOT_BY_KEY[node.root]?.label || node.root);
     dpTag.style.color = color;
     dpTag.style.background = `color-mix(in srgb, ${color} 14%, transparent)`;
     dpTitle.textContent = node.leaf || node.id;
     dpDesc.textContent = node.description ||
       (node.isRoot ? `Top-level CHAT component grouping the ${node.childCount || 0} codes below it.` :
-       node.isHub ? "Synthetic node connecting the eight activity-system roots." :
+       node.isHub ? "Synthetic node tying the activity-system roots together." :
+       node.isOrphan ? "Perceived outcome / unintended consequence — connected directly to the activity system." :
        "Coded reference from the NVivo codebook.");
     dpRefs.textContent = node.refs ?? "—";
     dpSources.textContent = node.sources ?? "—";
@@ -200,6 +212,23 @@
       links.push({ source: leaf.root, target: leaf.id, kind: "tree" });
     }
 
+    // Orphan Outcome leaves — only when the hub is visible, attached directly
+    // to "Activity System" with no intermediate root node.
+    if (showHub) {
+      for (const leaf of ORPHAN_OUTCOME_LEAVES) {
+        nodes.push({
+          id: leaf.id,
+          leaf: leaf.leaf,
+          root: "Outcome",
+          refs: leaf.refs,
+          sources: leaf.sources,
+          description: leaf.description,
+          isOrphan: true,
+        });
+        links.push({ source: HUB_ID, target: leaf.id, kind: "outcome-direct" });
+      }
+    }
+
     return { nodes, links };
   }
 
@@ -238,9 +267,12 @@
       .attr("class", "link")
       .attr("stroke", (d) => {
         if (d.kind === "hub") return cssColor("--c-dark-2");
+        if (d.kind === "outcome-direct") return cssColor("--c-outcome");
         return ROOT_COLOR[d.source.root || d.source] || "#c9cdd6";
       })
-      .attr("stroke-opacity", (d) => d.kind === "hub" ? 0.35 : 0.45);
+      .attr("stroke-opacity", (d) =>
+        d.kind === "hub" ? 0.35 : d.kind === "outcome-direct" ? 0.4 : 0.45
+      );
 
     nodeSel = nodeLayer.selectAll("g.node")
       .data(currentData.nodes, (d) => d.id)
@@ -275,8 +307,12 @@
     simulation = d3.forceSimulation(currentData.nodes)
       .force("link", d3.forceLink(currentData.links)
         .id((d) => d.id)
-        .distance((d) => d.kind === "hub" ? 130 : 70)
-        .strength((d) => d.kind === "hub" ? 0.4 : 0.7))
+        .distance((d) =>
+          d.kind === "hub" ? 130 : d.kind === "outcome-direct" ? 110 : 70
+        )
+        .strength((d) =>
+          d.kind === "hub" ? 0.4 : d.kind === "outcome-direct" ? 0.5 : 0.7
+        ))
       .force("charge", d3.forceManyBody().strength((d) => d.isHub ? -700 : d.isRoot ? -380 : -90))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("collide", d3.forceCollide().radius((d) => radiusForRefs(d.refs, d.isRoot, d.isHub) + 4).strength(0.85))
@@ -314,9 +350,14 @@
   function onNodeHover(d, isOn) {
     if (!nodeSel) return;
     if (isOn) {
+      const tagLabel = d.isHub
+        ? "Activity hub"
+        : d.isOrphan
+          ? "Outcome — direct"
+          : (ROOT_BY_KEY[d.root]?.label || d.root);
       tooltip.html(
         `<strong>${d.leaf}</strong><br/>` +
-        `<span>${d.isHub ? "Activity hub" : (ROOT_BY_KEY[d.root]?.label || d.root)}</span>` +
+        `<span>${tagLabel}</span>` +
         ` &nbsp;·&nbsp; <span>refs:</span> ${d.refs} ` +
         ` &nbsp;·&nbsp; <span>sources:</span> ${d.sources ?? "—"}`
       ).classed("show", true);
